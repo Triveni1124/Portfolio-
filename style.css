@@ -1,0 +1,244 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+:root {
+  --bg: #f9f9f9;
+  --text: #1a1a1a;
+  --accent: #4b6cb7;
+  --accent-light: #182848;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: rgba(0, 0, 0, 0.05);
+  --glass-blur: blur(12px);
+}
+
+body.dark {
+  --bg: #0f0f0f;
+  --text: #eeeeee;
+  --card-bg: rgba(30, 30, 30, 0.6);
+  --card-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: var(--glass-blur);
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-border);
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5em;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  position: relative;
+  padding: 4px 6px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: var(--accent);
+  color: white;
+}
+
+/* Mobile Navigation */
+.menu-toggle {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: var(--card-bg);
+    border-top: 1px solid var(--card-border);
+    padding: 1em;
+    text-align: center;
+  }
+  
+  .nav-links.show {
+    display: flex;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Sections */
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+}
+
+.hero img {
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 20px 0;
+  border: 4px solid var(--accent);
+}
+
+.btn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--accent-light);
+}
+
+/* Timeline */
+.timeline {
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.timeline p {
+  margin: 10px 0;
+}
+
+/* Grid Sections */
+.skills,
+.certifications,
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5em;
+  margin-top: 2em;
+}
+
+/* Cards */
+.project-card {
+  background: var(--card-bg);
+  padding: 1.5em;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+input,
+textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+body.dark input,
+body.dark textarea {
+  background: #1e1e1e;
+  color: white;
+  border-color: #444;
+}
+
+/* Social */
+.social-icons a {
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 1.4em;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--card-border);
+  margin-top: 40px;
+}
+
+/* Animated Radial Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(75, 108, 183, 0.2), transparent 60%);
+  animation: rotateBg 30s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotateBg {
+  from {
+    transform: rotate(0deg);
+  }
+  
+  to {
+    transform: rotate(360deg);
+  }
+}
